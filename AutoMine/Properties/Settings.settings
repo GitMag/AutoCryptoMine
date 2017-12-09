@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutoMine.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InactivityTimeVALUE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="MinerLocationVALUE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\xmr-stak\xmr-stak.exe</Value>
+    </Setting>
+    <Setting Name="StartWithWindowsVALUE" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xmr-stak.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
