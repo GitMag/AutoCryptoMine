@@ -45,6 +45,7 @@
             this.StartWithWindowsCheckBox = new System.Windows.Forms.CheckBox();
             this.MinerTextBox = new System.Windows.Forms.TextBox();
             this.InactivityTimeTextBox = new System.Windows.Forms.TextBox();
+            this.delay = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,7 +103,7 @@
             // SaveButton
             // 
             this.SaveButton.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveButton.Location = new System.Drawing.Point(160, 135);
+            this.SaveButton.Location = new System.Drawing.Point(158, 137);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(114, 31);
             this.SaveButton.TabIndex = 8;
@@ -130,6 +131,7 @@
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -181,12 +183,18 @@
             this.InactivityTimeTextBox.TabIndex = 1;
             this.InactivityTimeTextBox.Text = global::AutoMine.Properties.Settings.Default.InactivityTimeVALUE;
             // 
+            // delay
+            // 
+            this.delay.Enabled = true;
+            this.delay.Tick += new System.EventHandler(this.delay_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 181);
+            this.ClientSize = new System.Drawing.Size(284, 175);
+            this.ControlBox = false;
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.StartWithWindowsCheckBox);
             this.Controls.Add(this.DialogButton);
@@ -226,6 +234,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Timer delay;
     }
 }
 

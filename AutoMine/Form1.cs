@@ -19,12 +19,12 @@ namespace AutoMine
         int oldXloc = 0; // old location of x mouse
         int newXloc = 0; // new location of x mouse
         string noextnesion = ""; //Miner filename whitout extension
-        bool allowexit = false;
         public MainForm()
           
 
         {
             InitializeComponent();
+            this.Opacity = 0; // set form to invisivble
         }
         
         private void SaveButton_Click(object sender, EventArgs e)
@@ -83,14 +83,19 @@ namespace AutoMine
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
-        private void MainForm_Closing(object sender, CancelEventArgs e)
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure want to exit the App?", "Test", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
+            this.Show();
+        }
+
+        private void delay_Tick(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Opacity = 100;
+            delay.Dispose();
         }
     }
 }
