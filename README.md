@@ -5,12 +5,15 @@ When you resume using your computer the app will automatically close the Miner.
 
 ## Getting Started
 
-Download AutoCryptoMine to your windows pc [HERE](https://github.com/GitMag/AutoCryptoMine/archive/master.zip)
+Download the precompilede AutoCryptoMine .exe to your windows pc from the releases section [HERE](/releases).
+If you want to compile it yourself read the installation section.
 
 ## Installation
+
+You only need this guide if you want to compile the program yourself!
 ```
-After you have downloaded the ZIP file from the above mentioned link extract it.
-Open Automine\Automine.csproj with Visual Studio 2015 or newer
+Copy this repository to your computer(Clone or download --> Download as ZIP)
+Extract the zip and navigate to Automine\Automine.csproj with Visual Studio 2015 or newer
 Compile
 Done!
 ```
