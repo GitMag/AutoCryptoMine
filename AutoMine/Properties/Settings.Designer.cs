@@ -70,5 +70,29 @@ namespace AutoMine.Properties {
                 this["AppName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\xmr-stak\\config.txt")]
+        public string ConfigLocationVALUE {
+            get {
+                return ((string)(this["ConfigLocationVALUE"]));
+            }
+            set {
+                this["ConfigLocationVALUE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ConfigName {
+            get {
+                return ((string)(this["ConfigName"]));
+            }
+            set {
+                this["ConfigName"] = value;
+            }
+        }
     }
 }

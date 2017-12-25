@@ -10,18 +10,17 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
-
 namespace AutoMine
 {
     public partial class MainForm : Form
     {
-        int MinuteAmount = 0; //variable to store how many seconds is needed to open miner
-        int oldXloc = 0; // old location of x mouse
-        int newXloc = 0; // new location of x mouse
-        string noextnesion = ""; //Miner filename whitout extension
+        int MinuteAmount; //variable to store how many seconds is needed to open miner
+        int oldXloc; // old location of x mouse
+        int newXloc; // new location of x mouse
+        string noextnesion; //Miner filename whitout extension
+        string whereexec = AppDomain.CurrentDomain.BaseDirectory; //gets the directory from where this app is executed
         public MainForm()
-          
-
+        
         {
             InitializeComponent();
             this.Opacity = 0; // set form to invisivble
@@ -43,12 +42,21 @@ namespace AutoMine
                 Properties.Settings.Default["AppName"] = noextnesion; //store name in settings             
             }
         }
-
+        private void DialogButton2_Click(object sender, EventArgs e)
+        {
+            if //Get config file to textbox
+           (MinerLocationDialog.ShowDialog() == DialogResult.OK)
+            {
+                ConfigTextBox.Text = MinerLocationDialog.FileName; // set textbox to display selected program
+                Properties.Settings.Default["ConfigLocationVALUE"] = ConfigTextBox.Text; //Store name in settings
+                Properties.Settings.Default["ConfigName"] = MinerLocationDialog.SafeFileName; //Store only filename in settings                                    
+            }
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //runs every 60 seconds
+            //runs every seconds
             newXloc = Cursor.Position.X; // get current location
-            Console.WriteLine("NewXloc=" + newXloc.ToString() + "OldXLoc=" + oldXloc.ToString());
+            Console.WriteLine("NewXloc=" + newXloc.ToString() + "OldXLoc=" + oldXloc.ToString()); //debug info
             if (newXloc == oldXloc)
             {
                 MinuteAmount++; //increment by 1 
@@ -68,7 +76,9 @@ namespace AutoMine
         }
         public void StartMiner()
         {
-           Process.Start(MinerTextBox.Text); //start process from MinerLocation
+            System.IO.File.Copy(ConfigTextBox.Text, whereexec + @"\" + Properties.Settings.Default["ConfigName"], true); //copy config file to the directory
+            //where app was executed from, this ensurest that the latest config file is being used
+            Process.Start(MinerTextBox.Text); //start process from MinerLocation
         }
         public void KillMiner()
         {
@@ -80,7 +90,6 @@ namespace AutoMine
                 processList[0].Kill(); //kill process
             }
         }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -93,10 +102,12 @@ namespace AutoMine
 
         private void delay_Tick(object sender, EventArgs e)
         {
-            this.Hide();
+            //dealy is needed or otherwise form will note hide
+            this.Hide();   
             this.Opacity = 100;
-            delay.Dispose();
+            delay.Dispose(); //free memory
         }
     }
 }
+
 

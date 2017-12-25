@@ -14,5 +14,11 @@
     <Setting Name="AppName" Type="System.String" Scope="User">
       <Value Profile="(Default)">xmr-stak.exe</Value>
     </Setting>
+    <Setting Name="ConfigLocationVALUE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\xmr-stak\config.txt</Value>
+    </Setting>
+    <Setting Name="ConfigName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
