@@ -94,5 +94,53 @@ namespace AutoMine.Properties {
                 this["ConfigName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RunScript {
+            get {
+                return ((string)(this["RunScript"]));
+            }
+            set {
+                this["RunScript"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CloseScript {
+            get {
+                return ((string)(this["CloseScript"]));
+            }
+            set {
+                this["CloseScript"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ExecCloseScript {
+            get {
+                return ((bool)(this["ExecCloseScript"]));
+            }
+            set {
+                this["ExecCloseScript"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ExecRunScript {
+            get {
+                return ((bool)(this["ExecRunScript"]));
+            }
+            set {
+                this["ExecRunScript"] = value;
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace AutoMine
         int MinuteAmount; //variable to store how many seconds is needed to open miner
         int oldXloc; // old location of x mouse
         int newXloc; // new location of x mouse
+        bool minerRunning = false; //varibale if miner is running or not
         string noextnesion; //Miner filename whitout extension
         string whereexec = AppDomain.CurrentDomain.BaseDirectory; //gets the directory from where this app is executed
         public MainForm()
@@ -52,6 +53,33 @@ namespace AutoMine
                 Properties.Settings.Default["ConfigName"] = MinerLocationDialog.SafeFileName; //Store only filename in settings                                    
             }
         }
+        private void DialogButton3_Click(object sender, EventArgs e)
+        {
+            if //Get script location to textbox
+          (MinerLocationDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxScriptRun.Text = MinerLocationDialog.FileName; // set textbox to display selected program
+                Properties.Settings.Default["RunScript"] = textBoxScriptRun.Text; //Store name in settings                               
+            }
+        }
+        private void DialogButton4_Click_1(object sender, EventArgs e)
+        {
+            if //Get script location to textbox
+        (MinerLocationDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxScriptClose.Text = MinerLocationDialog.FileName; // set textbox to display selected program
+                Properties.Settings.Default["CloseScript"] = textBoxScriptClose.Text; //Store name in settings                               
+            }
+        }
+        private void DialogButton4_Click(object sender, EventArgs e)
+        {
+            if //Get script location to textbox
+          (MinerLocationDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxScriptClose.Text = MinerLocationDialog.FileName; // set textbox to display selected program
+                Properties.Settings.Default["CloseScript"] = textBoxScriptClose.Text; //Store name in settings                               
+            }
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             //runs every seconds
@@ -64,13 +92,18 @@ namespace AutoMine
                 if (MinuteAmount.ToString() == InactivityTimeTextBox.Text) //check if target reached
                 {
                     StartMiner(); // tartget reached, start miner
+                    minerRunning = true; //set value to true
                 }
             }
             else
             {
                 MinuteAmount = 0; // set MinuteAmount to zero because movement was detected
-                KillMiner(); //kill Miner if it is running
                 Console.WriteLine("MinuteAmount Reset");
+                if (minerRunning == true) //check if miner is running
+                {
+                    KillMiner(); //kill
+                    minerRunning = false; //set value to false
+                }             
             }
             oldXloc = Cursor.Position.X; //old location
         }
@@ -79,15 +112,21 @@ namespace AutoMine
             System.IO.File.Copy(ConfigTextBox.Text, whereexec + @"\" + Properties.Settings.Default["ConfigName"], true); //copy config file to the directory
             //where app was executed from, this ensurest that the latest config file is being used
             Process.Start(MinerTextBox.Text); //start process from MinerLocation
+            if (checkBoxCustomScriptRun.Checked == true) //checks if user wants to run custom script
+            {
+                Process.Start(textBoxScriptRun.Text);
+            }
         }
         public void KillMiner()
         {
-            Console.WriteLine("Attempting to kill " + Properties.Settings.Default["AppName"].ToString());
             Process[] processList = Process.GetProcessesByName(Properties.Settings.Default["AppName"].ToString()); //get process name from settings
-
             if (processList.Length > 0)
             {
                 processList[0].Kill(); //kill process
+            }
+            if (checkBoxCustomScriptClose.Checked == true) //checks if user wants to run custom script
+            {
+                Process.Start(textBoxScriptClose.Text);
             }
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
