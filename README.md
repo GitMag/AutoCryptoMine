@@ -1,7 +1,7 @@
 # Auto Crypto Miner
 
 A app that automatically starts your desired Mining application after desired time of inactivity has passed.
-When you resume using your computer the app will automatically close the Miner.
+When you resume using your computer the app will automatically close the Miner. You can also run custom scripts when miner starts/stops.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Basic usage:
 ```
 Start AutoMine.exe
 ```
-Tweak settings:
+Basic settings:
 ```
 Look for Auto Crpto Mine Notifyicon and right click --> settings
 Configure the inactivity time before opening miner
@@ -32,7 +32,13 @@ Select where your miner is located
 Select where your config file is located
 Save and you are done!
 ```
-
+Advanced settings:
+```
+Click advanced settings in the settings menu
+Custom Run script and Close script:
+Allows you to run custom scripts/programs when starting/stopping miner.
+Save and you are done!
+```
 ### Prerequisites
 
 ```
