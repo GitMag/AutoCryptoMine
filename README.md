@@ -19,13 +19,26 @@ Compile
 Done!
 ```
 
+## Usage
+Basic usage:
+```
+Start AutoMine.exe
+```
+Tweak settings:
+```
+Look for Auto Crpto Mine Notifyicon and right click --> settings
+Configure the inactivity time before opening miner
+Select where your miner is located
+Select where your config file is located
+Save and you are done!
+```
+
 ### Prerequisites
 
 ```
 .NET Framework 4.5.2 or newer.
 Windows or WINE(may not be stable)
 ```
-
 
 ## License
 
