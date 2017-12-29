@@ -9,6 +9,10 @@ Download the precompilede AutoCryptoMine .exe to your windows pc from the releas
 
 If you want the newest version  read the installation section.
 
+## Images
+![Settings scren](https://puu.sh/yQerC/a01a2b840f.png "Settings")
+
+
 ## Installation
 
 You only need this guide if you want to compile the program yourself and want the newest version(may be unstable)!
