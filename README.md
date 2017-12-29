@@ -34,7 +34,7 @@ Allows you to create custom profiles by day and time.
 ```
 Read more about profiler in the Profiler section of Usage.
 
-##Usage/configuration
+## Usage/configuration
 
 Basic usage:
 ```
