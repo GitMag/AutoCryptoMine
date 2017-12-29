@@ -18,8 +18,24 @@ Extract the zip and navigate to Automine\Automine.csproj with Visual Studio 2015
 Compile
 Done!
 ```
+## Features:
+Basic features:
+```
+Set the time before starting mining app
+set Mining app
+Set Config file for mining app
+Set custom script to execute when starting
+Set custom script to execute when stopping
+```
+Advanced features:
+```
+Profiler:
+Allows you to create custom profiles by day and time. 
+```
+Read more about profiler in the Profiler section of Usage.
 
-## Usage
+##Usage/configuration
+
 Basic usage:
 ```
 Start AutoMine.exe
@@ -38,6 +54,16 @@ Click advanced settings in the settings menu
 Custom Run script and Close script:
 Allows you to run custom scripts/programs when starting/stopping miner.
 Save and you are done!
+```
+Profiler:
+```
+Allows you to create custom profiles by day and time. 
+To open profiler Click the Profiler tab in the settings menu
+Example profiles:
+Work profile, Run X miner with X config and execute X custom start and stop script on Monday, Tuesday, Wednesday, Thursday, Friday from 08:00 to 17:00
+Evening profile: Run Run X miner with X config and execute X custom start and stop script on Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday from 17:01 to 23:59
+The possibiliteis are endless.
+Enable profiler by clicking advanced settings from settigns menu --> Enable profiler checkbox
 ```
 ### Prerequisites
 
