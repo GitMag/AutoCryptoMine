@@ -11,6 +11,10 @@ If you want the newest version  read the installation section.
 
 ## Images
 ![Settings scren](https://user-images.githubusercontent.com/34399030/34443785-24b94fac-ecd2-11e7-9a23-6d064dbd4628.png "Settings")
+![Advanced settings](https://user-images.githubusercontent.com/34399030/34443789-28f866f2-ecd2-11e7-852b-538f7304b181.png "Settings")
+![Scheduler view](https://user-images.githubusercontent.com/34399030/34443792-2b89c406-ecd2-11e7-81f7-35f24ab9135e.png "Settings")
+![Profile manager](https://user-images.githubusercontent.com/34399030/34443798-38e05930-ecd2-11e7-835f-109fe18303fd.png "Settings")
+
 
 
 ## Installation
