@@ -10,11 +10,14 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
+using Utilities;
 namespace AutoMine
 {
     public partial class MainForm : Form // int day = ((int)DateTime.Now.DayOfWeek == 0) ? 7 : (int)DateTime.Now.DayOfWeek;
     {
-        int MinuteAmount; //variable to store how many seconds is needed to open miner
+        globalKeyboardHook gkh = new globalKeyboardHook();
+        //Keyboardhook
+     
         int oldXloc; // old location of x mouse
         int newXloc; // new location of x mouse
         bool minerRunning = false; //varibale if miner is running or not
@@ -35,6 +38,7 @@ namespace AutoMine
 
         {
             InitializeComponent();
+            gkh.hook();
             this.Opacity = 0; // set form to invisivble
         }
 
@@ -50,9 +54,13 @@ namespace AutoMine
              (MinerLocationDialog.ShowDialog() == DialogResult.OK)
             {
                 MinerTextBox.Text = MinerLocationDialog.FileName; // set textbox to display selected program
-                noextnesion = Path.GetFileNameWithoutExtension(MinerTextBox.Text); // get filename whitout extension .exe
-                Properties.Settings.Default["AppName"] = noextnesion; //store name in settings             
-            }
+                GetKillName();
+            }     
+        }
+        void GetKillName()
+        {
+            noextnesion = Path.GetFileNameWithoutExtension(MinerTextBox.Text); // get filename whitout extension .exe
+            Properties.Settings.Default["AppName"] = noextnesion; //store name in settings    
         }
         private void DialogButton2_Click(object sender, EventArgs e)
         {
@@ -98,9 +106,9 @@ namespace AutoMine
             Console.WriteLine("NewXloc=" + newXloc.ToString() + "OldXLoc=" + oldXloc.ToString()); //debug info
             if (newXloc == oldXloc)
             {
-                MinuteAmount++; //increment by 1 
+                GlobalVariables.MinuteAmount++; //increment by 1 
 
-                if (MinuteAmount.ToString() == InactivityTimeTextBox.Text) //check if target reached
+                if (GlobalVariables.MinuteAmount.ToString() == InactivityTimeTextBox.Text) //check if target reached
                 {
                     StartMiner(); // tartget reached, start miner
                     minerRunning = true; //set value to true
@@ -108,7 +116,7 @@ namespace AutoMine
             }
             else
             {
-                MinuteAmount = 0; // set MinuteAmount to zero because movement was detected
+                GlobalVariables.MinuteAmount = 0; // set MinuteAmount to zero because movement was detected
                 Console.WriteLine("MinuteAmount Reset");
                 if (minerRunning == true) //check if miner is running
                 {
@@ -169,6 +177,7 @@ namespace AutoMine
         private void MainForm_Load(object sender, EventArgs e)
         {
             Directory.CreateDirectory(GlobalVariables.AppConfigLoc + @"\profiles"); //create directory where profiles are saved
+            GetKillName();
             if (checkBoxSchedule.Checked == true)
             {
                 LoadProfile();// Loads profile
@@ -231,7 +240,8 @@ namespace AutoMine
                         StartTime = StartTime.Replace(":", ""); //replace : with nothing
                         StopTime = File.ReadLines(file).Skip(2).Take(1).First(); //read profile stop time
                         StopTime = StopTime.Replace(":", ""); //replace : with nothing
-                        if (Enumerable.Range(Int32.Parse(StartTime), Int32.Parse(StopTime)).Contains(Int32.Parse(DateTime.Now.ToString("HHmm")))) //compare if current time is between profile values
+                       if (Enumerable.Range(Int32.Parse(StartTime), Int32.Parse(StopTime)).Contains(Int32.Parse(DateTime.Now.ToString("HHmm")))) 
+                        //compare if current time is between profile values
                         {
                             //matching profile found, load settings
                             MinerTextBox.Text = File.ReadLines(file).Skip(3).Take(1).First(); //get Miner loc
@@ -325,10 +335,12 @@ namespace AutoMine
              "\nStart script location:" + _RunLoc + "\nStop script location:" + _CloseLoc, "Profile information");
         }
     }
-    public static class GlobalVariables
-    {
-        public static string AppConfigLoc = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AutoCryptoMine\";
-    }
+
+}
+public static class GlobalVariables
+{
+    public static string AppConfigLoc = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AutoCryptoMine\";
+    public static int MinuteAmount; //variable to store how many seconds is needed to open miner
 }
 
 
