@@ -142,5 +142,41 @@ namespace AutoMine.Properties {
                 this["ExecRunScript"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SchedulerENABLED {
+            get {
+                return ((bool)(this["SchedulerENABLED"]));
+            }
+            set {
+                this["SchedulerENABLED"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ProfileNotifyVALUE {
+            get {
+                return ((bool)(this["ProfileNotifyVALUE"]));
+            }
+            set {
+                this["ProfileNotifyVALUE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ProfileCloseVALUE {
+            get {
+                return ((bool)(this["ProfileCloseVALUE"]));
+            }
+            set {
+                this["ProfileCloseVALUE"] = value;
+            }
+        }
     }
 }
